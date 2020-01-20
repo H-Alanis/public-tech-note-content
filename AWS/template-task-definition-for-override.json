@@ -1,0 +1,52 @@
+[{
+    "portMappings": [{
+        "hostPort": 80,
+        "protocol": "tcp",
+        "containerPort": 80
+    }],
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "$LOG_GROUP",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "$LOG_PREFIX"
+        }
+    },
+    "environment": [{
+            "name": "AWS_ACCESS_KEY_ID",
+            "value": "-----"	
+        },
+        {
+            "name": "AWS_SECRET_ACCESS_KEY",
+            "value": "---------"
+        },
+        {
+            "name": "ENVIRONMENT",
+            "value": "$ENV"
+        },
+        {
+            "name": "NEW_RELIC_APP_NAME",
+            "value": "$NEW_RELIC"
+        },
+        {
+            "name": "NEW_RELIC_LICENSE_KEY",
+            "value": "----"
+        },
+        {
+            "name": "WAR_S3_URL",
+            "value": "s3://ProjectWarBucket/$MODULE-$APP_VERSION.war"
+        },
+        {
+            "name": "VERSION",
+            "value": "$APP_VERSION"
+        }
+    ],
+    "mountPoints": [],
+    "cpu": $ENV_CPU,
+    "memoryReservation": $ENV_MEMORY,
+    "volumesFrom": [],
+    "image": "ADockerImage",
+    "essential": true,
+    "name": "webapp"
+}]
+
